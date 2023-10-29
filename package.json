@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "nodemon ./src/server.js",
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "db": "prisma studio"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
     "prisma": "^5.5.2"
   },
   "dependencies": {
+    "@prisma/client": "^5.5.2",
     "apollo-server": "^3.12.1",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
