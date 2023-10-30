@@ -5,17 +5,21 @@
   "scripts": {
     "dev": "nodemon ./src/server.js",
     "start": "node ./src/server.js",
-    "db": "prisma studio"
+    "db": "prisma studio",
+    "migrate": "prisma migrate dev --name init --skip-generate"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
     "prisma": "^5.5.2"
   },
   "dependencies": {
+    "@apollo/server": "^4.9.5",
     "@prisma/client": "^5.5.2",
-    "apollo-server": "^3.12.1",
-    "express": "^4.18.2",
-    "express-graphql": "^0.12.0",
-    "graphql": "^16.8.1"
+    "graphql": "^16.8.1",
+    "graphql-scalars": "^1.22.4",
+    "nexus": "^1.3.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }

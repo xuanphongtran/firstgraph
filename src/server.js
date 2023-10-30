@@ -1,8 +1,19 @@
-const { ApolloServer } = require('apollo-server')
-const { resolvers, typeDefs } = require('./schema')
+const { ApolloServer } = require('@apollo/server')
+const { startStandaloneServer } = require('@apollo/server/standalone')
+const { schema } = require('./schema')
+const { createContext } = require('./db')
 
-const port = process.env.PORT || 8080
+const start = async () => {
+  const server = new ApolloServer({ schema })
 
-new ApolloServer({ resolvers, typeDefs }).listen({ port }, () =>
-  console.log(`Server ready at: http://localhost:${port}`),
-)
+  const { url } = await startStandaloneServer(server, {
+    context: createContext,
+    listen: { port: 4000 },
+  })
+
+  console.log(`\
+  🚀 Server ready at: ${url}
+    `)
+}
+
+start()
